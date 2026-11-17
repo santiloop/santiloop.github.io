@@ -484,6 +484,47 @@ img{max-width:100%}
 .pup-steps li.on button{color:var(--ink);border-color:color-mix(in srgb,var(--accent) 60%,transparent)}
 .pup-steps button[aria-current="step"]{color:var(--on-accent);background:var(--accent);border-color:var(--accent)}
 
+
+/* ---------- "see more" + project pages */
+.more{display:inline-flex;align-items:center;gap:8px;margin-top:18px;min-height:44px;font:600 .95rem var(--body);color:var(--accent);text-decoration:none;border-bottom:1.5px solid transparent;transition:border-color .2s ease,gap .2s ease}
+.more:hover{gap:12px;border-bottom-color:currentColor}
+.hero .links{display:flex;align-items:center;gap:10px;margin:14px 0 0;font:500 .85rem var(--mono)}
+.hero .links a{color:var(--muted);text-decoration:none;padding:6px 0}
+.hero .links a:hover{color:var(--ink)}
+.bio .actions{margin-top:18px}
+.detail-hero{padding-top:24px;padding-bottom:20px}
+.detail-hero h1{margin:12px 0 14px;max-width:18ch;font:850 clamp(2.4rem,6.6vw,4.6rem)/.92 var(--display);font-stretch:64%;text-transform:uppercase;text-wrap:balance}
+.detail-hero .lede{max-width:62ch;font-size:1.1rem;margin:0 0 18px}
+.detail-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;align-items:start;padding-top:10px}
+@media (max-width:880px){.detail-grid{grid-template-columns:minmax(0,1fr)}.detail-card{order:-1}}
+.detail-main{display:grid;gap:30px}
+.detail-main section h2{margin:0 0 12px;padding-top:10px;font:800 1.25rem/1 var(--display);font-stretch:76%;text-transform:uppercase;border-top:2px solid var(--ink)}
+.detail-main p{margin:0;max-width:66ch}
+.how{margin:0;padding-left:22px;display:grid;gap:8px;max-width:66ch}
+.how li::marker{color:var(--accent);font:600 .9rem var(--mono)}
+.detail-card{position:sticky;top:84px;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:4px}
+.detail-card dl{margin:0;display:grid;gap:14px}
+.detail-card dt{margin-bottom:6px;font:500 .7rem/1 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.detail-card dd{margin:0;font-size:.95rem}
+.soon{padding:16px 18px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:4px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:600px){.gallery{grid-template-columns:minmax(0,1fr)}}
+.shot{margin:0;display:grid;gap:6px}
+.shot img,.shot video{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+.shot--video{grid-column:1/-1}
+.shot figcaption{font:500 .78rem var(--mono);color:var(--muted)}
+.detail-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.detail-nav a{display:grid;gap:4px;padding:16px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:4px;transition:border-color .2s ease,transform .2s ease}
+.detail-nav a:hover{border-color:var(--accent);transform:translateY(-2px)}
+.detail-nav small{font:500 .7rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.detail-nav span{font-weight:600}
+.detail-nav .next{text-align:right}
+
+
+.shot a{display:block;border-radius:4px}
+.shot a:hover img{border-color:var(--accent)}
+.shot video{aspect-ratio:auto;background:#0b0e14}
+.gallery-sec .gallery{margin-top:4px}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
 }
@@ -517,10 +558,10 @@ img{max-width:100%}
       <p class="status" data-enter><i aria-hidden="true"></i><span lang="es">Busco mi primera experiencia profesional</span><span lang="en">Looking for my first professional role</span></p>
       <div class="actions" data-enter>
         <button class="btn" type="button" data-scroll="p-taller"><span lang="es">Ver proyectos</span><span lang="en">See projects</span></button>
+        <a class="btn btn--ghost" href="Santiago-Martinez-CV.pdf" target="_blank" rel="noopener" data-cv><span lang="es">Descargar CV</span><span lang="en">Download CV</span></a>
         <button class="btn btn--ghost" type="button" data-contact><span lang="es">Escribime</span><span lang="en">Get in touch</span></button>
-        <a class="btn btn--ghost" href="https://github.com/santiloop" target="_blank" rel="noopener" translate="no">GitHub</a>
-        <a class="btn btn--ghost" href="https://www.linkedin.com/in/santiagomartinez-" target="_blank" rel="noopener" translate="no">LinkedIn</a>
       </div>
+      <p class="links" data-enter><a href="https://github.com/santiloop" target="_blank" rel="noopener" translate="no">GitHub</a><span aria-hidden="true">·</span><a href="https://www.linkedin.com/in/santiagomartinez-" target="_blank" rel="noopener" translate="no">LinkedIn</a></p>
     </div>
     <div class="hero-gl" id="hero-gl" aria-hidden="true"><svg class="gl-still" viewBox="0 0 120 96" aria-hidden="true"><path d="M42 24 18 48l24 24M67 14 53 82M78 24l24 24-24 24"/></svg></div>
   </section>
@@ -546,6 +587,7 @@ img{max-width:100%}
         <div class="f-tech"><dt><span lang="es">Tecnologías</span><span lang="en">Tech</span></dt><dd><ul class="tags"><li>WhatsApp</li><li><span lang="es">Agente conversacional</span><span lang="en">Conversational agent</span></li><li><span lang="es">Agenda de turnos</span><span lang="en">Scheduling</span></li><li><span lang="es">Automatización</span><span lang="en">Automation</span></li></ul></dd></div>
       </dl>
       
+      <a class="more" href="#proyecto-taller" data-to="p-taller"><span lang="es">Ver más</span><span lang="en">See more</span><span aria-hidden="true">→</span></a>
     </div>
     <div class="order-media"><figure class="pup" data-story="taller">
   <div class="pup-stage" tabindex="0" role="group" aria-roledescription="carrusel" aria-describedby="help-taller">
@@ -607,6 +649,7 @@ img{max-width:100%}
         <div class="f-tech"><dt><span lang="es">Tecnologías</span><span lang="en">Tech</span></dt><dd><ul class="tags"><li>C#</li><li>.NET 10</li><li>Blazor</li><li>Entity Framework Core</li><li>SQLite</li><li>ASP.NET Core Identity</li><li>xUnit</li><li>PWA</li></ul></dd></div>
       </dl>
       <div class="actions"><button class="btn" type="button" disabled><span lang="es">Probar la demo</span><span lang="en">Try the demo</span></button><span class="note"><span lang="es">Link en preparación</span><span lang="en">Link coming soon</span></span></div>
+      <a class="more" href="#proyecto-rutina" data-to="p-rutina"><span lang="es">Ver más</span><span lang="en">See more</span><span aria-hidden="true">→</span></a>
     </div>
     <div class="order-media"><figure class="pup" data-story="gym">
   <div class="pup-stage" tabindex="0" role="group" aria-roledescription="carrusel" aria-describedby="help-gym">
@@ -633,11 +676,12 @@ img{max-width:100%}
       <h3 class="order-title" id="t-barber"><span lang="es">Proyecto Barber: turnos para barberías</span><span lang="en">Proyecto Barber: barbershop bookings</span></h3>
       <dl class="fields">
         <div class="f-prob"><dt><span lang="es">Problema</span><span lang="en">The problem</span></dt><dd><span lang="es">Ordenar los turnos de una barbería: qué barbero atiende, en qué horario y qué días no se trabaja.</span><span lang="en">Keeping a barbershop’s bookings in order: which barber, at what time, and which days are closed.</span></dd></div>
-        <div class="f-what"><dt><span lang="es">Qué hace</span><span lang="en">What it does</span></dt><dd><ul class="checks"><li><span lang="es">Reserva de turnos con barbero asignado.</span><span lang="en">Bookings with an assigned barber.</span></li><li><span lang="es">Horarios por barbero y días no laborables: el sistema rechaza turnos fuera de horario.</span><span lang="en">Working hours per barber and closed days: bookings outside them are rejected.</span></li><li><span lang="es">Lista de turnos a confirmar del día.</span><span lang="en">A daily list of bookings waiting for confirmation.</span></li></ul></dd></div>
-        <div class="f-role"><dt><span lang="es">Mi parte</span><span lang="en">My role</span></dt><dd><span lang="es">Casos de uso, modelo de datos, API y pantallas.</span><span lang="en">Use cases, data model, API and screens.</span></dd></div>
+        <div class="f-what"><dt><span lang="es">Qué hace</span><span lang="en">What it does</span></dt><dd><ul class="checks"><li><span lang="es">Portal para clientes: se registran con su teléfono y piden turno viendo solo los horarios libres.</span><span lang="en">Customer portal: people sign up with their phone number and book, seeing only the free slots.</span></li><li><span lang="es">Agenda del local con el estado de cada turno: confirmar, iniciar atención, reprogramar o cancelar.</span><span lang="en">The shop’s agenda shows each booking’s status: confirm, start, reschedule or cancel.</span></li><li><span lang="es">Horarios por barbero y días no laborables: no se dan turnos fuera de horario y el sistema sugiere barbero.</span><span lang="en">Hours per barber and closed days: no bookings outside them, and the system suggests a barber.</span></li><li><span lang="es">Avisos para el dueño y un reporte mensual de ausentismo y recaudación, descargable en PDF.</span><span lang="en">Notifications for the owner and a monthly report on no-shows and revenue, downloadable as PDF.</span></li></ul></dd></div>
+        <div class="f-role"><dt><span lang="es">Mi parte</span><span lang="en">My role</span></dt><dd><span lang="es">De punta a punta: casos de uso, modelo de datos, API y pantallas.</span><span lang="en">End to end: use cases, data model, API and screens.</span></dd></div>
         <div class="f-tech"><dt><span lang="es">Tecnologías</span><span lang="en">Tech</span></dt><dd><ul class="tags"><li>C#</li><li>.NET</li><li>Blazor</li><li>ASP.NET Core Web API</li><li>Entity Framework Core</li><li>SQL Server</li></ul></dd></div>
       </dl>
       
+      <a class="more" href="#proyecto-barber" data-to="p-barber"><span lang="es">Ver más: videos y capturas</span><span lang="en">See more: videos and screenshots</span><span aria-hidden="true">→</span></a>
     </div>
     <div class="order-media"><figure class="pup" data-story="barber">
   <div class="pup-stage" tabindex="0" role="group" aria-roledescription="carrusel" aria-describedby="help-barber">
@@ -669,6 +713,7 @@ img{max-width:100%}
         <div class="f-tech"><dt><span lang="es">Tecnologías</span><span lang="en">Tech</span></dt><dd><ul class="tags"><li>C#</li><li>ASP.NET Core</li><li>Blazor</li><li>Entity Framework Core</li><li>SQL Server</li><li>JWT</li><li>GitHub</li><li>Scrum</li></ul></dd></div>
       </dl>
       
+      <a class="more" href="#proyecto-udx" data-to="p-udx"><span lang="es">Ver más</span><span lang="en">See more</span><span aria-hidden="true">→</span></a>
     </div>
     <div class="order-media"><figure class="pup" data-story="udx">
   <div class="pup-stage" tabindex="0" role="group" aria-roledescription="carrusel" aria-describedby="help-udx">
@@ -701,6 +746,7 @@ img{max-width:100%}
       <p lang="es">Soy de Córdoba Capital y estoy en segundo año de la Tecnicatura en Desarrollo de Software. Me interesa sobre todo el backend: modelar bien los datos, armar APIs y que la lógica del negocio quede clara.</p><p lang="en">I’m from Córdoba, Argentina, and I’m in the second year of a Software Development degree. I’m most interested in backend work: modelling data well, building APIs and keeping business logic clear.</p>
       <p lang="es">Desde 2022 trabajo en el emprendimiento familiar, en atención al cliente, entregas y stock. Ahí aprendí a organizarme y a escuchar qué necesita la persona que va a usar lo que hago.</p><p lang="en">Since 2022 I’ve worked in my family’s small business, handling customer service, deliveries and stock. It taught me to stay organised and to listen to what the people who use my work actually need.</p>
       <p lang="es">En el proyecto en equipo de la tecnicatura soy Scrum Master. Busco mi primera experiencia profesional en desarrollo de software.</p><p lang="en">On my team project at school I’m the Scrum Master. I’m looking for my first professional role in software development.</p>
+      <div class="actions"><a class="btn" href="Santiago-Martinez-CV.pdf" target="_blank" rel="noopener" data-cv><span lang="es">Descargar CV (PDF)</span><span lang="en">Download CV (PDF)</span></a><button class="btn btn--ghost" type="button" data-contact><span lang="es">Escribime</span><span lang="en">Get in touch</span></button></div>
     </div>
   </section>
 
@@ -780,6 +826,135 @@ img{max-width:100%}
   </section>
 </main>
 
+<main data-view="p-taller" id="main-p-taller" class="detail" hidden>
+  <section class="wrap detail-hero">
+    <a class="back" href="#proyectos" data-to="projects"><span aria-hidden="true">←</span> <span lang="es">Volver a proyectos</span><span lang="en">Back to projects</span></a>
+    <p class="kicker"><span>01/04 · <span lang="es">Proyecto propio</span><span lang="en">Personal project</span> · 2026</span></p>
+    <h1><span lang="es">Asistente de WhatsApp para talleres mecánicos</span><span lang="en">WhatsApp assistant for car repair shops</span></h1>
+    <p class="lede" lang="es">Un asistente para el WhatsApp de un taller mecánico. Contesta solo cuando un cliente pregunta si su auto está listo y arma los pedidos de turno con los datos del auto, para que el mecánico solo tenga que aceptar o rechazar.</p><p class="lede" lang="en">An assistant for a repair shop’s WhatsApp. It answers on its own when a customer asks whether their car is ready, and it puts together appointment requests with the car’s details, so the mechanic only has to accept or decline.</p>
+    <div class="actions"><a class="btn btn--big" href="#probar" data-to="try"><span lang="es">Quiero probarlo</span><span lang="en">I want to try it</span><span class="arrow" aria-hidden="true">→</span></a></div>
+  </section>
+  <div class="wrap detail-grid">
+    <div class="detail-main">
+      
+      <section><h2><span lang="es">El problema</span><span lang="en">The problem</span></h2><p lang="es">Un mecánico pierde mucho tiempo contestando “¿ya está el auto?” y preguntando qué le pasa a cada auto antes de dar un turno.</p><p lang="en">A mechanic spends a lot of time answering “is my car ready?” and asking what is wrong with each car before booking it in.</p></section>
+      <section><h2><span lang="es">Qué hace</span><span lang="en">What it does</span></h2><ul class="checks"><li><span lang="es">El mecánico marca cada auto con un tilde cuando está listo. Si el cliente pregunta, el asistente detecta la consulta y responde solo.</span><span lang="en">The mechanic ticks each car when it is ready. When a customer asks, the assistant recognises the question and answers on its own.</span></li><li><span lang="es">Si alguien pide un turno, el asistente le pregunta el modelo y el problema, revisa la agenda del taller y le manda al mecánico la solicitud con un día sugerido.</span><span lang="en">When someone asks for an appointment, the assistant asks for the model and the problem, checks the shop’s schedule and sends the mechanic the request with a suggested day.</span></li><li><span lang="es">El mecánico acepta o rechaza, y recién ahí el asistente le contesta al cliente.</span><span lang="en">The mechanic accepts or declines, and only then does the assistant reply to the customer.</span></li></ul></section>
+      <section><h2><span lang="es">Cómo funciona</span><span lang="en">How it works</span></h2><ol class="how"><li><span lang="es">El cliente escribe por WhatsApp, como siempre.</span><span lang="en">The customer writes on WhatsApp, as usual.</span></li><li><span lang="es">El asistente detecta si es una consulta por el estado del auto, un pedido de turno o algo que no le corresponde.</span><span lang="en">The assistant works out whether it is a question about the car, an appointment request or something it should not handle.</span></li><li><span lang="es">Si es un turno, pide lo que falta (modelo y problema) y revisa la agenda del taller.</span><span lang="en">For an appointment, it asks for whatever is missing (model and problem) and checks the shop’s schedule.</span></li><li><span lang="es">Le manda al mecánico la solicitud resumida, con una posible causa y un día sugerido.</span><span lang="en">It sends the mechanic a summary of the request, with a possible cause and a suggested day.</span></li><li><span lang="es">El mecánico acepta o rechaza, y recién ahí el asistente le contesta al cliente.</span><span lang="en">The mechanic accepts or declines, and only then does the assistant reply to the customer.</span></li><li><span lang="es">Lo que no entiende, se lo pasa al mecánico.</span><span lang="en">Anything it does not understand goes to the mechanic.</span></li></ol></section>
+      <section><h2><span lang="es">Mi parte</span><span lang="en">My role</span></h2><p lang="es">Idea, diseño de la conversación y desarrollo.</p><p lang="en">Idea, conversation design and development.</p></section>
+      <section class="gallery-sec"><h2><span lang="es">Capturas y videos</span><span lang="en">Screenshots and videos</span></h2><p class="soon"><span lang="es">Estoy preparando las capturas y los videos de este proyecto.</span><span lang="en">Screenshots and videos for this project are on their way.</span></p></section>
+    </div>
+    <aside class="detail-card">
+      <dl>
+        <div><dt><span lang="es">Estado</span><span lang="en">Status</span></dt><dd><span class="pill pill--dev"><span lang="es">En desarrollo</span><span lang="en">In progress</span></span></dd></div>
+        <div><dt><span lang="es">Tipo</span><span lang="en">Type</span></dt><dd><span lang="es">Proyecto propio</span><span lang="en">Personal project</span></dd></div>
+        <div><dt><span lang="es">Año</span><span lang="en">Year</span></dt><dd>2026</dd></div>
+        <div><dt><span lang="es">Tecnologías</span><span lang="en">Tech</span></dt><dd><ul class="tags"><li>WhatsApp</li><li><span lang="es">Agente conversacional</span><span lang="en">Conversational agent</span></li><li><span lang="es">Agenda de turnos</span><span lang="en">Scheduling</span></li><li><span lang="es">Automatización</span><span lang="en">Automation</span></li></ul></dd></div>
+        <div><dt><span lang="es">Nota</span><span lang="en">Note</span></dt><dd><span lang="es">En desarrollo. La demo de esta página simula el asistente con reglas que corren en el navegador; la versión que estoy desarrollando va conectada a WhatsApp.</span><span lang="en">In progress. The demo on this page simulates the assistant with rules that run in the browser; the version I am building connects to WhatsApp.</span></dd></div>
+      </dl>
+    </aside>
+  </div>
+  <nav class="wrap detail-nav" aria-label="Otros proyectos">
+    <a href="#proyecto-udx" data-to="p-udx"><small><span lang="es">Anterior</span><span lang="en">Previous</span></small><span>← UDX</span></a>
+    <a href="#proyecto-rutina" data-to="p-rutina" class="next"><small><span lang="es">Siguiente</span><span lang="en">Next</span></small><span>Rutina →</span></a>
+  </nav>
+</main>
+<main data-view="p-rutina" id="main-p-rutina" class="detail" hidden>
+  <section class="wrap detail-hero">
+    <a class="back" href="#proyectos" data-to="projects"><span aria-hidden="true">←</span> <span lang="es">Volver a proyectos</span><span lang="en">Back to projects</span></a>
+    <p class="kicker"><span>02/04 · <span lang="es">Proyecto propio</span><span lang="en">Personal project</span> · 2026</span></p>
+    <h1><span lang="es">Rutina: planes de gimnasio por link</span><span lang="en">Rutina: gym workout plans by link</span></h1>
+    <p class="lede" lang="es">Una app web para gimnasios, pensada para el celular. El profe arma un plan y le manda un link al alumno, que ve su rutina tocando los músculos de una figura del cuerpo, carga lo que entrenó y sigue su progreso.</p><p class="lede" lang="en">A mobile-first web app for gyms. The trainer builds a plan and sends the member a link; the member sees their routine by tapping the muscles on a body diagram, logs each workout and follows their progress.</p>
+    <div class="actions"><button class="btn" type="button" disabled><span lang="es">Probar la demo</span><span lang="en">Try the demo</span></button><span class="note"><span lang="es">Link en preparación</span><span lang="en">Link coming soon</span></span></div>
+  </section>
+  <div class="wrap detail-grid">
+    <div class="detail-main">
+      
+      <section><h2><span lang="es">El problema</span><span lang="en">The problem</span></h2><p lang="es">En muchos gimnasios la rutina queda en un papel o en un chat. El alumno no siempre sabe cómo hacer cada ejercicio y no ve cómo progresa.</p><p lang="en">In many gyms the workout plan lives on paper or in a chat. Members don’t always know how to do each exercise, and they can’t see their progress.</p></section>
+      <section><h2><span lang="es">Qué hace</span><span lang="en">What it does</span></h2><ul class="checks"><li><span lang="es">El profe arma un plan y le manda un link al alumno, sin registro ni contraseña.</span><span lang="en">The trainer builds a plan and sends the member a link, with no sign-up or password.</span></li><li><span lang="es">El alumno toca un músculo en una figura del cuerpo y ve los ejercicios de su plan, con fotos, pasos y errores comunes.</span><span lang="en">The member taps a muscle on a body diagram and sees the exercises in their plan, with photos, steps and common mistakes.</span></li><li><span lang="es">Carga peso y repeticiones de cada serie y sigue su progreso en una planilla.</span><span lang="en">They log weight and reps for every set and follow their progress in a sheet.</span></li><li><span lang="es">El profe tiene un panel con login para crear planes y desactivar links.</span><span lang="en">Trainers get a login-protected panel to create plans and disable links.</span></li></ul></section>
+      <section><h2><span lang="es">Cómo está pensada</span><span lang="en">How it is designed</span></h2><ul class="how"><li><span lang="es">Blazor Web App con interactividad en el servidor, en .NET 10.</span><span lang="en">Blazor Web App with server-side interactivity, on .NET 10.</span></li><li><span lang="es">SQLite con Entity Framework Core: la base se crea y se carga sola al arrancar.</span><span lang="en">SQLite with Entity Framework Core: the database creates and seeds itself on start-up.</span></li><li><span lang="es">Cada plan se abre con un link de código largo y aleatorio, que el profe puede desactivar.</span><span lang="en">Each plan opens from a link with a long random code, which the trainer can disable.</span></li><li><span lang="es">Panel del profe con login (ASP.NET Core Identity) y sin registro público.</span><span lang="en">Trainer panel with login (ASP.NET Core Identity) and no public sign-up.</span></li><li><span lang="es">Límite de intentos por IP y solo los datos mínimos: alias, plan, pesos y repeticiones.</span><span lang="en">Rate limiting per IP and only the minimum data: alias, plan, weights and reps.</span></li><li><span lang="es">Pruebas con xUnit e instalable en el celular como PWA.</span><span lang="en">Tests with xUnit, and installable on a phone as a PWA.</span></li></ul></section>
+      <section><h2><span lang="es">Mi parte</span><span lang="en">My role</span></h2><p lang="es">Proyecto propio, de punta a punta.</p><p lang="en">Personal project, end to end.</p></section>
+      <section class="gallery-sec"><h2><span lang="es">Capturas y videos</span><span lang="en">Screenshots and videos</span></h2><p class="soon"><span lang="es">Estoy preparando las capturas y los videos de este proyecto.</span><span lang="en">Screenshots and videos for this project are on their way.</span></p></section>
+    </div>
+    <aside class="detail-card">
+      <dl>
+        <div><dt><span lang="es">Estado</span><span lang="en">Status</span></dt><dd><span class="pill pill--soon"><span lang="es">Demo en preparación</span><span lang="en">Demo coming soon</span></span></dd></div>
+        <div><dt><span lang="es">Tipo</span><span lang="en">Type</span></dt><dd><span lang="es">Proyecto propio</span><span lang="en">Personal project</span></dd></div>
+        <div><dt><span lang="es">Año</span><span lang="en">Year</span></dt><dd>2026</dd></div>
+        <div><dt><span lang="es">Tecnologías</span><span lang="en">Tech</span></dt><dd><ul class="tags"><li>C#</li><li>.NET 10</li><li>Blazor</li><li>Entity Framework Core</li><li>SQLite</li><li>ASP.NET Core Identity</li><li>xUnit</li><li>PWA</li></ul></dd></div>
+        <div><dt><span lang="es">Nota</span><span lang="en">Note</span></dt><dd><span lang="es">Demo en preparación.</span><span lang="en">Demo coming soon.</span></dd></div>
+      </dl>
+    </aside>
+  </div>
+  <nav class="wrap detail-nav" aria-label="Otros proyectos">
+    <a href="#proyecto-taller" data-to="p-taller"><small><span lang="es">Anterior</span><span lang="en">Previous</span></small><span>← <span lang="es">Asistente para talleres</span><span lang="en">Repair-shop assistant</span></span></a>
+    <a href="#proyecto-barber" data-to="p-barber" class="next"><small><span lang="es">Siguiente</span><span lang="en">Next</span></small><span>Proyecto Barber →</span></a>
+  </nav>
+</main>
+<main data-view="p-barber" id="main-p-barber" class="detail" hidden>
+  <section class="wrap detail-hero">
+    <a class="back" href="#proyectos" data-to="projects"><span aria-hidden="true">←</span> <span lang="es">Volver a proyectos</span><span lang="en">Back to projects</span></a>
+    <p class="kicker"><span>03/04 · <span lang="es">Proyecto propio</span><span lang="en">Personal project</span> · 2026</span></p>
+    <h1><span lang="es">Proyecto Barber: turnos para barberías</span><span lang="en">Proyecto Barber: barbershop bookings</span></h1>
+    <p class="lede" lang="es">Un sistema web para una barbería con dos lados: los clientes piden turno desde el celular y el local maneja la agenda, los barberos, los horarios y los números del mes.</p><p class="lede" lang="en">A web system for a barbershop with two sides: customers book from their phone, and the shop runs the agenda, the barbers, the hours and the monthly numbers.</p>
+    <div class="actions"></div>
+  </section>
+  <div class="wrap detail-grid">
+    <div class="detail-main">
+      <section class="gallery-sec"><h2><span lang="es">Capturas y videos</span><span lang="en">Screenshots and videos</span></h2><div class="gallery"><figure class="shot shot--video"><video src="media/barber-turno-cliente.mp4" poster="media/barber-turno-cliente.jpg" controls playsinline preload="none" aria-label="El cliente se registra con su teléfono y pide un turno: solo ve los horarios libres, el sistema le sugiere barbero y el turno queda en “Mis próximos turnos”."></video><figcaption><span lang="es">El cliente se registra con su teléfono y pide un turno: solo ve los horarios libres, el sistema le sugiere barbero y el turno queda en “Mis próximos turnos”.</span><span lang="en">A customer signs up with their phone number and books: only free slots are shown, a barber is suggested and the booking appears under “My upcoming bookings”.</span></figcaption></figure><figure class="shot shot--video"><video src="media/barber-turno-agenda.mp4" poster="media/barber-turno-agenda.jpg" controls playsinline preload="none" aria-label="Desde la agenda, el local le da un turno a un cliente nuevo y lo ve con su estado y sus acciones."></video><figcaption><span lang="es">Desde la agenda, el local le da un turno a un cliente nuevo y lo ve con su estado y sus acciones.</span><span lang="en">From the agenda, the shop books a new customer and sees the booking with its status and actions.</span></figcaption></figure><figure class="shot shot--video"><video src="media/barber-configuracion.mp4" poster="media/barber-configuracion.jpg" controls playsinline preload="none" aria-label="El dueño carga un servicio, un barbero nuevo y sus franjas horarias (video acelerado al doble)."></video><figcaption><span lang="es">El dueño carga un servicio, un barbero nuevo y sus franjas horarias (video acelerado al doble).</span><span lang="en">The owner adds a service, a new barber and their working hours (video at 2× speed).</span></figcaption></figure><figure class="shot"><a href="media/barber-avisos.webp" target="_blank" rel="noopener"><img src="media/barber-avisos.webp" alt="Avisos: el dueño se entera de cada turno nuevo y de cada cambio de horario." loading="lazy"></a><figcaption><span lang="es">Avisos: el dueño se entera de cada turno nuevo y de cada cambio de horario.</span><span lang="en">Notifications: the owner sees every new booking and every change to the hours.</span></figcaption></figure><figure class="shot"><a href="media/barber-reporte.webp" target="_blank" rel="noopener"><img src="media/barber-reporte.webp" alt="Reporte mensual: turnos, ausentismo y recaudación por semana y por barbero, con descarga en PDF." loading="lazy"></a><figcaption><span lang="es">Reporte mensual: turnos, ausentismo y recaudación por semana y por barbero, con descarga en PDF.</span><span lang="en">Monthly report: bookings, no-shows and revenue by week and by barber, with PDF download.</span></figcaption></figure><figure class="shot"><a href="media/barber-pedir-turno.webp" target="_blank" rel="noopener"><img src="media/barber-pedir-turno.webp" alt="Portal del cliente: pedir turno y ver los próximos." loading="lazy"></a><figcaption><span lang="es">Portal del cliente: pedir turno y ver los próximos.</span><span lang="en">Customer portal: book and see upcoming bookings.</span></figcaption></figure><figure class="shot"><a href="media/barber-dias-no-laborables.webp" target="_blank" rel="noopener"><img src="media/barber-dias-no-laborables.webp" alt="Días no laborables: feriados o vacaciones en los que no se dan turnos." loading="lazy"></a><figcaption><span lang="es">Días no laborables: feriados o vacaciones en los que no se dan turnos.</span><span lang="en">Closed days: holidays or vacations when no bookings are taken.</span></figcaption></figure></div></section>
+      <section><h2><span lang="es">El problema</span><span lang="en">The problem</span></h2><p lang="es">Ordenar los turnos de una barbería: qué barbero atiende, en qué horario y qué días no se trabaja.</p><p lang="en">Keeping a barbershop’s bookings in order: which barber, at what time, and which days are closed.</p></section>
+      <section><h2><span lang="es">Qué hace</span><span lang="en">What it does</span></h2><ul class="checks"><li><span lang="es">Portal para clientes: se registran con su teléfono y piden turno viendo solo los horarios libres.</span><span lang="en">Customer portal: people sign up with their phone number and book, seeing only the free slots.</span></li><li><span lang="es">Agenda del local con el estado de cada turno: confirmar, iniciar atención, reprogramar o cancelar.</span><span lang="en">The shop’s agenda shows each booking’s status: confirm, start, reschedule or cancel.</span></li><li><span lang="es">Horarios por barbero y días no laborables: no se dan turnos fuera de horario y el sistema sugiere barbero.</span><span lang="en">Hours per barber and closed days: no bookings outside them, and the system suggests a barber.</span></li><li><span lang="es">Avisos para el dueño y un reporte mensual de ausentismo y recaudación, descargable en PDF.</span><span lang="en">Notifications for the owner and a monthly report on no-shows and revenue, downloadable as PDF.</span></li><li><span lang="es">Cada cliente puede pedir hasta 2 turnos por mes; reprogramar o cancelar no cuenta.</span><span lang="en">Each customer can book up to 2 appointments a month; rescheduling or cancelling does not count.</span></li><li><span lang="es">El dueño carga los servicios con duración y precio, los barberos y sus franjas horarias.</span><span lang="en">The owner sets up services with duration and price, the barbers and their time slots.</span></li><li><span lang="es">Usuarios con login, roles y cambio de contraseña.</span><span lang="en">Users with login, roles and password change.</span></li></ul></section>
+      <section><h2><span lang="es">Cómo está hecho</span><span lang="en">How it is built</span></h2><ul class="how"><li><span lang="es">Antes de programar documenté los casos de uso.</span><span lang="en">Before writing code, I documented the use cases.</span></li><li><span lang="es">Pantallas en Blazor y API en ASP.NET Core.</span><span lang="en">Screens in Blazor and an API in ASP.NET Core.</span></li><li><span lang="es">Entity Framework Core con SQL Server para los datos.</span><span lang="en">Entity Framework Core with SQL Server for the data.</span></li><li><span lang="es">Las reglas del negocio se validan en la API: horarios por barbero y días no laborables.</span><span lang="en">Business rules are checked in the API: each barber’s hours and closed days.</span></li><li><span lang="es">Endpoints documentados con Swagger.</span><span lang="en">Endpoints documented with Swagger.</span></li></ul></section>
+      <section><h2><span lang="es">Mi parte</span><span lang="en">My role</span></h2><p lang="es">De punta a punta: casos de uso, modelo de datos, API y pantallas.</p><p lang="en">End to end: use cases, data model, API and screens.</p></section>
+      
+    </div>
+    <aside class="detail-card">
+      <dl>
+        <div><dt><span lang="es">Estado</span><span lang="en">Status</span></dt><dd><span class="pill pill--dev"><span lang="es">En desarrollo</span><span lang="en">In progress</span></span></dd></div>
+        <div><dt><span lang="es">Tipo</span><span lang="en">Type</span></dt><dd><span lang="es">Proyecto propio</span><span lang="en">Personal project</span></dd></div>
+        <div><dt><span lang="es">Año</span><span lang="en">Year</span></dt><dd>2026</dd></div>
+        <div><dt><span lang="es">Tecnologías</span><span lang="en">Tech</span></dt><dd><ul class="tags"><li>C#</li><li>.NET</li><li>Blazor</li><li>ASP.NET Core Web API</li><li>Entity Framework Core</li><li>SQL Server</li></ul></dd></div>
+        
+      </dl>
+    </aside>
+  </div>
+  <nav class="wrap detail-nav" aria-label="Otros proyectos">
+    <a href="#proyecto-rutina" data-to="p-rutina"><small><span lang="es">Anterior</span><span lang="en">Previous</span></small><span>← Rutina</span></a>
+    <a href="#proyecto-udx" data-to="p-udx" class="next"><small><span lang="es">Siguiente</span><span lang="en">Next</span></small><span>UDX →</span></a>
+  </nav>
+</main>
+<main data-view="p-udx" id="main-p-udx" class="detail" hidden>
+  <section class="wrap detail-hero">
+    <a class="back" href="#proyectos" data-to="projects"><span aria-hidden="true">←</span> <span lang="es">Volver a proyectos</span><span lang="en">Back to projects</span></a>
+    <p class="kicker"><span>04/04 · <span lang="es">Proyecto en equipo</span><span lang="en">Team project</span> · 2026</span></p>
+    <h1><span lang="es">UDX: plataforma de clases particulares</span><span lang="en">UDX: private tutoring platform</span></h1>
+    <p class="lede" lang="es">Una plataforma para que las familias encuentren profes particulares por materia y por zona, vean sus perfiles y reseñas y les pidan una clase. La hacemos entre cuatro estudiantes de la tecnicatura.</p><p class="lede" lang="en">A platform where families find private tutors by subject and area, see their profiles and reviews, and request a class. Four of us from the software development course are building it.</p>
+    <div class="actions"></div>
+  </section>
+  <div class="wrap detail-grid">
+    <div class="detail-main">
+      
+      <section><h2><span lang="es">El problema</span><span lang="en">The problem</span></h2><p lang="es">Conectar a familias que buscan clases particulares con docentes, por materia y por zona.</p><p lang="en">Connecting families looking for private tutoring with teachers, by subject and area.</p></section>
+      <section><h2><span lang="es">Qué hace</span><span lang="en">What it does</span></h2><ul class="checks"><li><span lang="es">Perfiles de docentes con materias, tarifa por hora, ubicación y reseñas.</span><span lang="en">Teacher profiles with subjects, hourly rate, location and reviews.</span></li><li><span lang="es">Búsqueda y filtrado de docentes.</span><span lang="en">Teacher search and filters.</span></li><li><span lang="es">Solicitudes de clase y login con roles: familia, docente y administrador.</span><span lang="en">Class requests and role-based login: parent, teacher and admin.</span></li></ul></section>
+      <section><h2><span lang="es">Cómo está hecho</span><span lang="en">How it is built</span></h2><ul class="how"><li><span lang="es">Solución en capas: base de datos (entidades y DbContext), servicios, servidor con la API y un proyecto compartido.</span><span lang="en">Layered solution: database (entities and DbContext), services, a server with the API, and a shared project.</span></li><li><span lang="es">SQL Server con Entity Framework Core; relaciones configuradas con Fluent API.</span><span lang="en">SQL Server with Entity Framework Core; relationships configured with the Fluent API.</span></li><li><span lang="es">Login con JWT y roles: familia, docente y administrador.</span><span lang="en">Login with JWT and roles: parent, teacher and admin.</span></li><li><span lang="es">Trabajo en equipo con GitHub (ramas y pull requests) y Scrum por sprints.</span><span lang="en">Teamwork with GitHub (branches and pull requests) and Scrum in sprints.</span></li></ul></section>
+      <section><h2><span lang="es">Mi parte</span><span lang="en">My role</span></h2><p lang="es">Scrum Master del equipo de 4 desde el Sprint 4: organizo las reuniones, el tablero y los reportes de avance. En el código: endpoints de ubicación y búsqueda de docentes.</p><p lang="en">Scrum Master of the 4-person team since Sprint 4: I run the meetings, the board and progress reports. In the code: teacher location and search endpoints.</p></section>
+      <section class="gallery-sec"><h2><span lang="es">Capturas y videos</span><span lang="en">Screenshots and videos</span></h2><p class="soon"><span lang="es">Estoy preparando las capturas y los videos de este proyecto.</span><span lang="en">Screenshots and videos for this project are on their way.</span></p></section>
+    </div>
+    <aside class="detail-card">
+      <dl>
+        <div><dt><span lang="es">Estado</span><span lang="en">Status</span></dt><dd><span class="pill pill--dev"><span lang="es">En desarrollo</span><span lang="en">In progress</span></span></dd></div>
+        <div><dt><span lang="es">Tipo</span><span lang="en">Type</span></dt><dd><span lang="es">Proyecto en equipo</span><span lang="en">Team project</span></dd></div>
+        <div><dt><span lang="es">Año</span><span lang="en">Year</span></dt><dd>2026</dd></div>
+        <div><dt><span lang="es">Tecnologías</span><span lang="en">Tech</span></dt><dd><ul class="tags"><li>C#</li><li>ASP.NET Core</li><li>Blazor</li><li>Entity Framework Core</li><li>SQL Server</li><li>JWT</li><li>GitHub</li><li>Scrum</li></ul></dd></div>
+        
+      </dl>
+    </aside>
+  </div>
+  <nav class="wrap detail-nav" aria-label="Otros proyectos">
+    <a href="#proyecto-barber" data-to="p-barber"><small><span lang="es">Anterior</span><span lang="en">Previous</span></small><span>← Proyecto Barber</span></a>
+    <a href="#proyecto-taller" data-to="p-taller" class="next"><small><span lang="es">Siguiente</span><span lang="en">Next</span></small><span><span lang="es">Asistente para talleres</span><span lang="en">Repair-shop assistant</span> →</span></a>
+  </nav>
+</main>
+
 <footer class="contact" id="contacto">
   <div class="wrap">
     <div>
@@ -793,6 +968,7 @@ img{max-width:100%}
       </div>
       <div class="c-row"><div><span class="lbl">LinkedIn</span><a class="val" href="https://www.linkedin.com/in/santiagomartinez-" target="_blank" rel="noopener">linkedin.com/in/santiagomartinez-</a></div></div>
       <div class="c-row"><div><span class="lbl">GitHub</span><a class="val" href="https://github.com/santiloop" target="_blank" rel="noopener">github.com/santiloop</a></div></div>
+      <div class="c-row" data-cv><div><span class="lbl">CV</span><a class="val" href="Santiago-Martinez-CV.pdf" target="_blank" rel="noopener">Santiago-Martinez-CV.pdf</a></div></div>
     </div>
     <p class="foot">© 2026 Santiago Martínez · Córdoba, Argentina</p>
   </div>
@@ -811,6 +987,7 @@ img{max-width:100%}
       </div>
       <div class="c-row"><div><span class="lbl">LinkedIn</span><a class="val" href="https://www.linkedin.com/in/santiagomartinez-" target="_blank" rel="noopener">linkedin.com/in/santiagomartinez-</a></div></div>
       <div class="c-row"><div><span class="lbl">GitHub</span><a class="val" href="https://github.com/santiloop" target="_blank" rel="noopener">github.com/santiloop</a></div></div>
+      <div class="c-row" data-cv><div><span class="lbl">CV</span><a class="val" href="Santiago-Martinez-CV.pdf" target="_blank" rel="noopener">Santiago-Martinez-CV.pdf</a></div></div>
     </div>
   </div>
 </div>
@@ -2690,9 +2867,18 @@ function initTry(root, getLang, reduced) {
   var root = document.documentElement;
   var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var FINE = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  var ROUTES = { 'proyectos': ['projects', 'es'], 'sobre-mi': ['about', 'es'], 'probar': ['try', 'es'], 'projects': ['projects', 'en'], 'about': ['about', 'en'], 'try': ['try', 'en'] };
-  var NAMES = { projects: { es: 'proyectos', en: 'projects' }, about: { es: 'sobre-mi', en: 'about' }, try: { es: 'probar', en: 'try' } };
-  var VIEW_LABEL = { projects: { es: 'Proyectos', en: 'Projects' }, about: { es: 'Sobre mí', en: 'About me' }, try: { es: 'Probá el asistente', en: 'Try the assistant' } };
+  var NAMES = {
+    projects: { es: 'proyectos', en: 'projects' }, about: { es: 'sobre-mi', en: 'about' }, try: { es: 'probar', en: 'try' },
+    'p-taller': { es: 'proyecto-taller', en: 'project-taller' }, 'p-rutina': { es: 'proyecto-rutina', en: 'project-rutina' },
+    'p-barber': { es: 'proyecto-barber', en: 'project-barber' }, 'p-udx': { es: 'proyecto-udx', en: 'project-udx' }
+  };
+  var VIEW_LABEL = {
+    projects: { es: 'Proyectos', en: 'Projects' }, about: { es: 'Sobre mí', en: 'About me' }, try: { es: 'Probá el asistente', en: 'Try the assistant' },
+    'p-taller': { es: 'Asistente para talleres', en: 'Repair-shop assistant' }, 'p-rutina': { es: 'Rutina', en: 'Rutina' },
+    'p-barber': { es: 'Proyecto Barber', en: 'Proyecto Barber' }, 'p-udx': { es: 'UDX', en: 'UDX' }
+  };
+  var ROUTES = {};
+  Object.keys(NAMES).forEach(function (v) { ROUTES[NAMES[v].es] = [v, 'es']; ROUTES[NAMES[v].en] = [v, 'en']; });
   var cur = { view: null, lang: 'es' };
   var modules = [];
 
@@ -2713,7 +2899,8 @@ function initTry(root, getLang, reduced) {
     document.querySelectorAll('[data-to]').forEach(function (a) {
       var to = a.getAttribute('data-to');
       a.setAttribute('href', '#' + NAMES[to][lang]);
-      if (a.closest('.nav')) { if (to === view) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }
+      var navView = view.indexOf('p-') === 0 || view === 'try' ? 'projects' : view;
+      if (a.closest('.nav')) { if (to === navView) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }
     });
     document.querySelectorAll('[data-lang-to]').forEach(function (a) {
       var l = a.getAttribute('data-lang-to');
@@ -2728,28 +2915,36 @@ function initTry(root, getLang, reduced) {
     var h = decodeURIComponent(location.hash.slice(1));
     var r = ROUTES[h];
     if (!r) r = cur.view ? [cur.view, cur.lang] : ['projects', stored() === 'en' ? 'en' : 'es'];
-    var view = r[0], lang = r[1];
+    show(r[0], r[1]);
+  }
+  function show(view, lang) {
+    if (view === cur.view && lang === cur.lang) return;
     var viewChanged = cur.view !== null && cur.view !== view;
-    if (!viewChanged || RM || !wipe || !wipe.animate) {
-      applyRoute(view, lang);
-      if (viewChanged) window.scrollTo(0, 0);
-      return;
-    }
-    if (busy) { applyRoute(view, lang); window.scrollTo(0, 0); return; }
+    var canAnimate = viewChanged && !RM && wipe && typeof wipe.animate === 'function';
+    if (!canAnimate || busy) { applyRoute(view, lang); if (viewChanged) window.scrollTo(0, 0); return; }
     busy = true;
     wipeLabel.textContent = VIEW_LABEL[view][lang];
     wipe.hidden = false;
     var ease = 'cubic-bezier(.76,0,.24,1)';
-    wipe.animate([{ transform: 'translateY(100%)' }, { transform: 'translateY(0%)' }], { duration: 420, easing: ease, fill: 'forwards' }).onfinish = function () {
-      applyRoute(view, lang);
-      window.scrollTo(0, 0);
-      setTimeout(function () {
-        wipe.animate([{ transform: 'translateY(0%)' }, { transform: 'translateY(-100%)' }], { duration: 480, easing: ease, fill: 'forwards' }).onfinish = function () {
-          wipe.hidden = true; busy = false;
-        };
-      }, 120);
-    };
+    try { wipe.animate([{ transform: 'translateY(100%)' }, { transform: 'translateY(0%)' }], { duration: 380, easing: ease, fill: 'forwards' }); } catch (e) { }
+    setTimeout(function () {
+      try { applyRoute(view, lang); } finally { window.scrollTo(0, 0); }
+      try { wipe.animate([{ transform: 'translateY(0%)' }, { transform: 'translateY(-100%)' }], { duration: 440, easing: ease, fill: 'forwards' }); } catch (e) { }
+      setTimeout(function () { wipe.hidden = true; busy = false; }, 470);
+    }, 420);
   }
+  // links between views: change the address and switch right away (does not depend on hashchange)
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-to], a[data-lang-to]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    var view = a.getAttribute('data-to') || cur.view, lang = a.getAttribute('data-lang-to') || cur.lang;
+    if (!NAMES[view]) return;
+    e.preventDefault();
+    var hash = '#' + NAMES[view][lang];
+    if (location.hash !== hash) { try { history.pushState(null, '', hash); } catch (er) { location.hash = hash; } }
+    show(view, lang);
+  });
+  window.addEventListener('popstate', route);
   window.addEventListener('hashchange', route);
 
   // Scroll that also works in app webviews: smooth first, then check and jump if nothing moved
@@ -2928,6 +3123,9 @@ function initTry(root, getLang, reduced) {
       })();
     }
   }
+
+  // the CV PDF only exists on the real site (GitHub Pages) or a local copy
+  if (!/github\.io$/.test(location.hostname) && location.protocol !== 'file:' && location.hostname !== 'localhost') document.querySelectorAll('[data-cv]').forEach(function (el) { el.hidden = true; });
 
   // ------------------------------------------------------------ modules
   route();
