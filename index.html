@@ -1316,6 +1316,8 @@ function initHeroGL(box, opts) {
         var v = new V(pointer.x, pointer.y, 0.5).unproject(cam).sub(cam.position).normalize();
         pWorld.copy(cam.position).add(v.multiplyScalar(-cam.position.z / v.z));
       }
+      if (!isFinite(pWorld.x) || !isFinite(pWorld.y)) pWorld.set(999, 999, 0);
+      if (!isFinite(cam.position.x) || !isFinite(cam.position.y)) { cam.position.x = 0; cam.position.y = 0; }
       cam.position.x += ((pointer.active ? pointer.x * 0.8 : 0) - cam.position.x) * 0.04;
       cam.position.y += ((pointer.active ? pointer.y * 0.5 : 0) - cam.position.y) * 0.04;
       ticks.forEach(function (o) {
@@ -1380,6 +1382,8 @@ function initHeroGL(box, opts) {
   window.addEventListener('pointermove', function (e) {
     if (e.pointerType === 'touch') return;
     var rect = box.getBoundingClientRect();
+    // the hero is hidden while another view is open: its box is 0×0, so ignore the pointer there
+    if (rect.width < 2 || rect.height < 2) { pointer.active = false; return; }
     pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
     pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
     pointer.active = true;
