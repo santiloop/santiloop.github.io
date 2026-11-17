@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio de Santiago Martínez, desarrollador de software Jr. (C#, .NET, SQL) en Córdoba, Argentina.">
 <meta name="theme-color" content="#F1F3F6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0E1117" media="(prefers-color-scheme: dark)">
-<script>(function(){var r=document.documentElement;r.classList.add('js');if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))r.classList.add('motion');setTimeout(function(){r.classList.add('is-loaded')},2500);})();</script>
+<script>(function(){var r=document.documentElement;r.classList.add('js');try{var th=localStorage.getItem('sm-theme');if(th==='dark'||th==='light')r.setAttribute('data-theme',th);}catch(e){}if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))r.classList.add('motion');setTimeout(function(){r.classList.add('is-loaded')},2500);})();</script>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,6 +69,20 @@ img{max-width:100%}
 .lang a{font:500 .75rem/1 var(--mono);padding:9px 9px;color:var(--muted);text-decoration:none}
 .lang a[aria-current="true"]{background:var(--ink);color:var(--bg)}
 @media (max-width:560px){.brand-name{display:none}}
+/* light / dark toggle: quiet ghost button at the far left, same box language as ES/EN */
+.theme{position:relative;flex:none;display:grid;place-items:center;width:34px;height:34px;padding:0;margin-right:-2px;border:1px solid var(--line);border-radius:3px;background:transparent;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s}
+.theme::after{content:"";position:absolute;inset:-5px}
+.theme:hover{color:var(--ink);border-color:color-mix(in srgb,var(--ink) 35%,var(--line))}
+.theme svg{grid-area:1/1;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s cubic-bezier(.34,1.4,.64,1),opacity .25s}
+.theme .i-moon{fill:currentColor;stroke:none}
+.theme .i-sun{opacity:0;transform:rotate(-90deg) scale(.4)}
+.theme[data-mode="dark"] .i-moon{opacity:0;transform:rotate(90deg) scale(.4)}
+.theme[data-mode="dark"] .i-sun{opacity:1;transform:none}
+@media (max-width:420px){.bar .wrap{gap:8px;padding:0 14px}.nav a{padding:12px 7px}.theme{width:32px;height:32px}}
+.nav a{white-space:nowrap}
+@media (max-width:360px){.bar .wrap{gap:6px;padding:0 12px}.nav a{padding:12px 5px;font-size:.88rem}.lang a{padding:9px 7px}}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-new(root){z-index:2}
 
 /* ---------- hero */
 .hero{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px 40px;align-items:center;padding-top:48px;padding-bottom:28px;min-height:min(640px,calc(100svh - 60px))}
@@ -130,7 +144,7 @@ img{max-width:100%}
 .sec-head span{font:500 .75rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 
 /* ---------- work orders */
-.orders{display:grid;gap:28px}
+.orders{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
 .order{background:var(--surface);border:1px solid var(--line);border-radius:4px;scroll-margin-top:80px}
 .order-strip{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:12px 22px;font:500 .74rem/1.2 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.04em;border-bottom:1.5px dashed var(--line)}
 .order-strip::before,.order-strip::after{content:"";position:absolute;bottom:-9px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:1px solid var(--line)}
@@ -536,6 +550,10 @@ img{max-width:100%}
 
 <header class="bar">
   <div class="wrap">
+    <button class="theme" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8a8.4 8.4 0 1 0 10.8 10.8z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M2.5 12h2.3M19.2 12h2.3M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+    </button>
     <a class="brand" href="#proyectos" data-to="projects"><span class="mark">SM</span><span class="brand-name">Santiago Martínez</span></a>
     <nav class="nav" aria-label="Secciones">
       <a href="#proyectos" data-to="projects"><span lang="es">Proyectos</span><span lang="en">Projects</span></a>
@@ -900,7 +918,7 @@ img{max-width:100%}
   </section>
   <div class="wrap detail-grid">
     <div class="detail-main">
-      <section class="gallery-sec"><h2><span lang="es">Capturas y videos</span><span lang="en">Screenshots and videos</span></h2><div class="gallery"><figure class="shot shot--video"><video src="media/barber-turno-cliente.mp4" poster="media/barber-turno-cliente.jpg" controls playsinline preload="none" aria-label="El cliente se registra con su teléfono y pide un turno: solo ve los horarios libres, el sistema le sugiere barbero y el turno queda en “Mis próximos turnos”."></video><figcaption><span lang="es">El cliente se registra con su teléfono y pide un turno: solo ve los horarios libres, el sistema le sugiere barbero y el turno queda en “Mis próximos turnos”.</span><span lang="en">A customer signs up with their phone number and books: only free slots are shown, a barber is suggested and the booking appears under “My upcoming bookings”.</span></figcaption></figure><figure class="shot shot--video"><video src="media/barber-turno-agenda.mp4" poster="media/barber-turno-agenda.jpg" controls playsinline preload="none" aria-label="Desde la agenda, el local le da un turno a un cliente nuevo y lo ve con su estado y sus acciones."></video><figcaption><span lang="es">Desde la agenda, el local le da un turno a un cliente nuevo y lo ve con su estado y sus acciones.</span><span lang="en">From the agenda, the shop books a new customer and sees the booking with its status and actions.</span></figcaption></figure><figure class="shot shot--video"><video src="media/barber-configuracion.mp4" poster="media/barber-configuracion.jpg" controls playsinline preload="none" aria-label="El dueño carga un servicio, un barbero nuevo y sus franjas horarias (video acelerado al doble)."></video><figcaption><span lang="es">El dueño carga un servicio, un barbero nuevo y sus franjas horarias (video acelerado al doble).</span><span lang="en">The owner adds a service, a new barber and their working hours (video at 2× speed).</span></figcaption></figure><figure class="shot"><a href="media/barber-avisos.webp" target="_blank" rel="noopener"><img src="media/barber-avisos.webp" alt="Avisos: el dueño se entera de cada turno nuevo y de cada cambio de horario." loading="lazy"></a><figcaption><span lang="es">Avisos: el dueño se entera de cada turno nuevo y de cada cambio de horario.</span><span lang="en">Notifications: the owner sees every new booking and every change to the hours.</span></figcaption></figure><figure class="shot"><a href="media/barber-reporte.webp" target="_blank" rel="noopener"><img src="media/barber-reporte.webp" alt="Reporte mensual: turnos, ausentismo y recaudación por semana y por barbero, con descarga en PDF." loading="lazy"></a><figcaption><span lang="es">Reporte mensual: turnos, ausentismo y recaudación por semana y por barbero, con descarga en PDF.</span><span lang="en">Monthly report: bookings, no-shows and revenue by week and by barber, with PDF download.</span></figcaption></figure><figure class="shot"><a href="media/barber-pedir-turno.webp" target="_blank" rel="noopener"><img src="media/barber-pedir-turno.webp" alt="Portal del cliente: pedir turno y ver los próximos." loading="lazy"></a><figcaption><span lang="es">Portal del cliente: pedir turno y ver los próximos.</span><span lang="en">Customer portal: book and see upcoming bookings.</span></figcaption></figure><figure class="shot"><a href="media/barber-dias-no-laborables.webp" target="_blank" rel="noopener"><img src="media/barber-dias-no-laborables.webp" alt="Días no laborables: feriados o vacaciones en los que no se dan turnos." loading="lazy"></a><figcaption><span lang="es">Días no laborables: feriados o vacaciones en los que no se dan turnos.</span><span lang="en">Closed days: holidays or vacations when no bookings are taken.</span></figcaption></figure></div></section>
+      <section class="gallery-sec"><h2><span lang="es">Capturas y videos</span><span lang="en">Screenshots and videos</span></h2><div class="gallery"><figure class="shot shot--video"><video poster="barber-turno-cliente.jpg" data-poster-alt="media/barber-turno-cliente.jpg" controls playsinline preload="none" aria-label="El cliente se registra con su teléfono y pide un turno: solo ve los horarios libres, el sistema le sugiere barbero y el turno queda en “Mis próximos turnos”."><source src="barber-turno-cliente.mp4" type="video/mp4"><source src="media/barber-turno-cliente.mp4" type="video/mp4"></video><figcaption><span lang="es">El cliente se registra con su teléfono y pide un turno: solo ve los horarios libres, el sistema le sugiere barbero y el turno queda en “Mis próximos turnos”.</span><span lang="en">A customer signs up with their phone number and books: only free slots are shown, a barber is suggested and the booking appears under “My upcoming bookings”.</span></figcaption></figure><figure class="shot shot--video"><video poster="barber-turno-agenda.jpg" data-poster-alt="media/barber-turno-agenda.jpg" controls playsinline preload="none" aria-label="Desde la agenda, el local le da un turno a un cliente nuevo y lo ve con su estado y sus acciones."><source src="barber-turno-agenda.mp4" type="video/mp4"><source src="media/barber-turno-agenda.mp4" type="video/mp4"></video><figcaption><span lang="es">Desde la agenda, el local le da un turno a un cliente nuevo y lo ve con su estado y sus acciones.</span><span lang="en">From the agenda, the shop books a new customer and sees the booking with its status and actions.</span></figcaption></figure><figure class="shot shot--video"><video poster="barber-configuracion.jpg" data-poster-alt="media/barber-configuracion.jpg" controls playsinline preload="none" aria-label="El dueño carga un servicio, un barbero nuevo y sus franjas horarias (video acelerado al doble)."><source src="barber-configuracion.mp4" type="video/mp4"><source src="media/barber-configuracion.mp4" type="video/mp4"></video><figcaption><span lang="es">El dueño carga un servicio, un barbero nuevo y sus franjas horarias (video acelerado al doble).</span><span lang="en">The owner adds a service, a new barber and their working hours (video at 2× speed).</span></figcaption></figure><figure class="shot"><a href="barber-avisos.webp" target="_blank" rel="noopener"><img src="barber-avisos.webp" data-alt="media/barber-avisos.webp" onerror="this.onerror=null;this.src=this.dataset.alt;this.parentNode.href=this.dataset.alt" alt="Avisos: el dueño se entera de cada turno nuevo y de cada cambio de horario." loading="lazy"></a><figcaption><span lang="es">Avisos: el dueño se entera de cada turno nuevo y de cada cambio de horario.</span><span lang="en">Notifications: the owner sees every new booking and every change to the hours.</span></figcaption></figure><figure class="shot"><a href="barber-reporte.webp" target="_blank" rel="noopener"><img src="barber-reporte.webp" data-alt="media/barber-reporte.webp" onerror="this.onerror=null;this.src=this.dataset.alt;this.parentNode.href=this.dataset.alt" alt="Reporte mensual: turnos, ausentismo y recaudación por semana y por barbero, con descarga en PDF." loading="lazy"></a><figcaption><span lang="es">Reporte mensual: turnos, ausentismo y recaudación por semana y por barbero, con descarga en PDF.</span><span lang="en">Monthly report: bookings, no-shows and revenue by week and by barber, with PDF download.</span></figcaption></figure><figure class="shot"><a href="barber-pedir-turno.webp" target="_blank" rel="noopener"><img src="barber-pedir-turno.webp" data-alt="media/barber-pedir-turno.webp" onerror="this.onerror=null;this.src=this.dataset.alt;this.parentNode.href=this.dataset.alt" alt="Portal del cliente: pedir turno y ver los próximos." loading="lazy"></a><figcaption><span lang="es">Portal del cliente: pedir turno y ver los próximos.</span><span lang="en">Customer portal: book and see upcoming bookings.</span></figcaption></figure><figure class="shot"><a href="barber-dias-no-laborables.webp" target="_blank" rel="noopener"><img src="barber-dias-no-laborables.webp" data-alt="media/barber-dias-no-laborables.webp" onerror="this.onerror=null;this.src=this.dataset.alt;this.parentNode.href=this.dataset.alt" alt="Días no laborables: feriados o vacaciones en los que no se dan turnos." loading="lazy"></a><figcaption><span lang="es">Días no laborables: feriados o vacaciones en los que no se dan turnos.</span><span lang="en">Closed days: holidays or vacations when no bookings are taken.</span></figcaption></figure></div></section>
       <section><h2><span lang="es">El problema</span><span lang="en">The problem</span></h2><p lang="es">Ordenar los turnos de una barbería: qué barbero atiende, en qué horario y qué días no se trabaja.</p><p lang="en">Keeping a barbershop’s bookings in order: which barber, at what time, and which days are closed.</p></section>
       <section><h2><span lang="es">Qué hace</span><span lang="en">What it does</span></h2><ul class="checks"><li><span lang="es">Portal para clientes: se registran con su teléfono y piden turno viendo solo los horarios libres.</span><span lang="en">Customer portal: people sign up with their phone number and book, seeing only the free slots.</span></li><li><span lang="es">Agenda del local con el estado de cada turno: confirmar, iniciar atención, reprogramar o cancelar.</span><span lang="en">The shop’s agenda shows each booking’s status: confirm, start, reschedule or cancel.</span></li><li><span lang="es">Horarios por barbero y días no laborables: no se dan turnos fuera de horario y el sistema sugiere barbero.</span><span lang="en">Hours per barber and closed days: no bookings outside them, and the system suggests a barber.</span></li><li><span lang="es">Avisos para el dueño y un reporte mensual de ausentismo y recaudación, descargable en PDF.</span><span lang="en">Notifications for the owner and a monthly report on no-shows and revenue, downloadable as PDF.</span></li><li><span lang="es">Cada cliente puede pedir hasta 2 turnos por mes; reprogramar o cancelar no cuenta.</span><span lang="en">Each customer can book up to 2 appointments a month; rescheduling or cancelling does not count.</span></li><li><span lang="es">El dueño carga los servicios con duración y precio, los barberos y sus franjas horarias.</span><span lang="en">The owner sets up services with duration and price, the barbers and their time slots.</span></li><li><span lang="es">Usuarios con login, roles y cambio de contraseña.</span><span lang="en">Users with login, roles and password change.</span></li></ul></section>
       <section><h2><span lang="es">Cómo está hecho</span><span lang="en">How it is built</span></h2><ul class="how"><li><span lang="es">Antes de programar documenté los casos de uso.</span><span lang="en">Before writing code, I documented the use cases.</span></li><li><span lang="es">Pantallas en Blazor y API en ASP.NET Core.</span><span lang="en">Screens in Blazor and an API in ASP.NET Core.</span></li><li><span lang="es">Entity Framework Core con SQL Server para los datos.</span><span lang="en">Entity Framework Core with SQL Server for the data.</span></li><li><span lang="es">Las reglas del negocio se validan en la API: horarios por barbero y días no laborables.</span><span lang="en">Business rules are checked in the API: each barber’s hours and closed days.</span></li><li><span lang="es">Endpoints documentados con Swagger.</span><span lang="en">Endpoints documented with Swagger.</span></li></ul></section>
@@ -1678,7 +1696,9 @@ function initHeroGL(box, opts) {
   box.addEventListener('click', function () { assembleTarget = assembleTarget ? 0 : 1; if (reduced) { assembled = assembleTarget; k.lastStill = 0; k.still(0); } });
 
   var mq = window.matchMedia('(prefers-color-scheme: dark)');
-  if (mq.addEventListener) mq.addEventListener('change', applyTheme);
+  function retheme() { applyTheme(); if (reduced) { k.lastStill = 0; k.still(0); } }
+  if (mq.addEventListener) mq.addEventListener('change', retheme);
+  window.addEventListener('sm-theme', retheme);
 
   if (reduced) { assembleTarget = 1; assembled = 1; k.lastStill = 0; k.still(0); }
   else k.start();
@@ -3124,11 +3144,58 @@ function initTry(root, getLang, reduced) {
     }
   }
 
+  // ------------------------------------------------------------ light / dark toggle (top left)
+  var themeBtn = $('theme');
+  var DARK = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function themeNow() {
+    var t = root.getAttribute('data-theme');
+    return t === 'dark' || t === 'light' ? t : (DARK && DARK.matches ? 'dark' : 'light');
+  }
+  function syncTheme() {
+    var t = themeNow(), toDark = t === 'light';
+    var bg = getComputedStyle(root).getPropertyValue('--bg').trim();
+    if (bg) document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', bg); });
+    if (!themeBtn) return;
+    var lbl = cur.lang === 'en' ? (toDark ? 'Switch to dark mode' : 'Switch to light mode') : (toDark ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro');
+    themeBtn.setAttribute('aria-label', lbl);
+    themeBtn.title = lbl;
+    themeBtn.setAttribute('data-mode', t);
+  }
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('sm-theme', t); } catch (e) { }
+    syncTheme();
+    try { window.dispatchEvent(new Event('sm-theme')); } catch (e) { }
+  }
+  if (themeBtn) themeBtn.addEventListener('click', function () {
+    var next = themeNow() === 'dark' ? 'light' : 'dark';
+    if (RM || typeof document.startViewTransition !== 'function') { setTheme(next); return; }
+    // circular reveal that grows out of the button
+    var r = themeBtn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+    var rad = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    var vt;
+    try { vt = document.startViewTransition(function () { setTheme(next); }); } catch (e) { setTheme(next); return; }
+    vt.ready.then(function () {
+      root.animate({ clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + rad + 'px at ' + x + 'px ' + y + 'px)'] },
+        { duration: 560, easing: 'cubic-bezier(.76,0,.24,1)', pseudoElement: '::view-transition-new(root)' });
+    }).catch(function () { });
+  });
+  if (DARK) { if (DARK.addEventListener) DARK.addEventListener('change', syncTheme); else if (DARK.addListener) DARK.addListener(syncTheme); }
+  modules.push({ relabel: syncTheme });
+
+  // gallery posters: if the files ended up inside a media/ folder, use those
+  document.querySelectorAll('video[data-poster-alt]').forEach(function (v) {
+    var im = new Image();
+    im.onerror = function () { v.poster = v.getAttribute('data-poster-alt'); };
+    im.src = v.getAttribute('poster');
+  });
+
   // the CV PDF only exists on the real site (GitHub Pages) or a local copy
   if (!/github\.io$/.test(location.hostname) && location.protocol !== 'file:' && location.hostname !== 'localhost') document.querySelectorAll('[data-cv]').forEach(function (el) { el.hidden = true; });
 
   // ------------------------------------------------------------ modules
   route();
+  syncTheme();
   modules.push(initVideo($('video'), getLang, RM));
   modules.push(initTry($('main-try'), getLang, RM));
   var gl = null;
